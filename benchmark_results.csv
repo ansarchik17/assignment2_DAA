@@ -1,0 +1,6 @@
+Algorithm,ArraySize,Comparisons,Swaps,ArrayAccesses,ExecutionTime(ms)
+SelectionSort,100,4950,96,5241,0.831
+SelectionSort,1000,499500,992,502483,4.905
+SelectionSort,10000,49995000,9984,50024967,46.779
+SelectionSort,50000,1249975000,49985,1250124969,676.880
+SelectionSort,100000,4999950000,99982,5000249963,2589.966
