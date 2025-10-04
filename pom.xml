@@ -7,7 +7,7 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>assik2_DAA</name>
+  <name>assignment2_DAA</name>
   <url>http://maven.apache.org</url>
 
   <properties>

@@ -1,4 +1,4 @@
-package assik2_DAA;
+package assignment2_DAA;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
