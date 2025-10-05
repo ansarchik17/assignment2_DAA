@@ -71,3 +71,84 @@ Best           Ω(n)                   O(1)               n-1           Minimal 
 Average        Θ(n*n)                 O(1)              ~n²/4          Moderate    Quadratic
 Worst          O(n*n)                 O(1)              ~n²/2          High        Quadratic
  
+Code Review
+
+1. Code Structure and Functionality Overview
+
+The provided implementation of Insertion Sort is divided into three classes that work together to measure and evaluate the algorithm’s performance:
+	•	InsertionSort class — contains the core sorting logic with instrumentation for performance tracking.
+	•	BenchmarkRunner class — manages the benchmarking process by generating random input arrays of different sizes, executing the sorting algorithm, and storing results in a CSV file.
+	•	PerformanceTracker class — records runtime metrics including the number of comparisons, swaps, array accesses, and total execution time.
+
+The modular separation of these components demonstrates strong software design practices. It isolates the sorting algorithm from benchmarking logic, which improves readability, maintainability, and testability.
+
+
+2. Strengths of the Implementation
+	•	Well-Structured Instrumentation:
+The integration of PerformanceTracker provides detailed insights into the algorithm’s internal operations. This allows for accurate empirical evaluation of complexity in terms of not only execution time but also computational operations.
+	•	Readable Code with Clear Logic:
+The variable naming (key, j, tracker) and flow of the insertion process closely follow the theoretical steps of the Insertion Sort algorithm. Each line has a clear and distinct purpose.
+	•	Accurate Time Measurement:
+The use of System.nanoTime() in the tracker provides high-resolution timing, improving the accuracy of performance measurement, especially for smaller datasets.
+	•	Automated Scalability Testing:
+The BenchmarkRunner runs the algorithm on multiple input sizes (100, 1,000, 10,000, 100,000), producing results suitable for complexity validation and performance trend analysis.
+
+
+3. Identified Inefficiencies and Code-Level Issues
+
+Despite being functional, the implementation contains several opportunities for improvement both in efficiency and code design:
+
+a. Redundant Array Access Counting
+
+In the InsertionSort.sort() method, tracker.incrementArrayAccesses() is called excessively, sometimes multiple times for the same element operation.
+Example:arr[j + 1] = arr[j];
+tracker.incrementArrayAccesses();
+
+This double-counting may artificially inflate the number of array accesses, leading to inaccurate metrics.
+Suggestion: Track only unique and meaningful accesses — one for each read and one for each write.
+
+b. Comparison Counting Missed in Edge Cases
+
+The while loop condition:while (j >= 0 && arr[j] > key)
+performs one additional failed comparison when the loop exits, but this is not counted in the tracker.
+Suggestion: Increment comparisons after each conditional check, regardless of the outcome, ensuring accurate total counts.
+
+c. Inefficient Handling of Already Sorted Arrays
+
+The implementation does not optimize for early termination when the array is already sorted.
+Optimization Idea:
+Before entering the inner while loop, check if arr[j] <= key; if so, skip unnecessary comparisons. This small optimization reduces redundant operations in nearly sorted arrays, improving best-case performance further.
+
+d. Lack of Adaptive Benchmarking
+
+The benchmark currently tests only randomized datasets. Since Insertion Sort performs differently under sorted, nearly sorted, and reversed conditions, including those variations would provide a more comprehensive performance analysis.
+Suggestion: Add data generation modes such as:
+generateSortedArray(size);
+generateReversedArray(size);
+
+and benchmark all of them.
+
+e. File I/O Inefficiency
+
+Each benchmark iteration opens and closes a new PrintWriter to append results. This can slow down large experiments due to repeated I/O operations.
+Suggestion:
+Maintain a single open writer during all iterations and close it only after all results are written.
+
+
+4. Optimization Recommendations
+generateNearlySortedArray(size);
+5. Proposed Improvements for Complexity
+
+While algorithmic complexity (O(n²)) cannot be changed for pure Insertion Sort, practical runtime can be optimized through small implementation adjustments:
+	1.	Early Break Condition:
+Stop inner loop early when the correct position is found — reducing constant factors in average cases.
+	2.	Binary Search for Insertion Point:
+Use binary search to find the correct insertion index.
+Although shifting elements still takes O(n), this reduces comparisons to O(log n), improving efficiency.
+	3.	Hybrid Approach (Insertion + Merge Sort):
+Employ Insertion Sort for small subarrays (≤ 32 elements) inside a divide-and-conquer algorithm like Merge Sort or Quick Sort.
+This is a common optimization in real-world libraries (e.g., Python’s TimSort).
+
+6. Conclusion
+
+The reviewed implementation is accurate, modular, and well-instrumented for performance evaluation. The use of a dedicated tracker and automated benchmarking framework demonstrates solid understanding of algorithmic testing. However, the code can benefit from minor refinements to improve measurement precision and runtime performance. By implementing suggested optimizations—especially accurate metric tracking and adaptive dataset testing—the analysis will become more robust, leading to more reliable empirical validation of theoretical complexity.
