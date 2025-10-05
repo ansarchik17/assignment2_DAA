@@ -64,3 +64,10 @@ Compared to more advanced sorting algorithms:
 	1)Merge Sort and Quick Sort achieve an average complexity of O(n log n), making them more efficient for large datasets.
 	2)Bubble Sort also has O(n²) complexity but typically performs more swaps than Insertion Sort.
 	3)Therefore, Insertion Sort occupies a middle ground — faster than Bubble Sort on small inputs, but much slower than Divide-and-Conquer algorithms like Merge or Quick Sort on large ones.
+
+6. Summary
+*Case        *Time complexity     *Space complexity    *Comparisons    *Swaps     *Nature
+Best           Ω(n)                   O(1)               n-1           Minimal     Linear 
+Average        Θ(n*n)                 O(1)              ~n²/4          Moderate    Quadratic
+Worst          O(n*n)                 O(1)              ~n²/2          High        Quadratic
+ 
