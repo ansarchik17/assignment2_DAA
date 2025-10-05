@@ -9,3 +9,8 @@ Formally, given an array A of size n, the algorithm iterates from the second ele
 While Insertion Sort is not the most efficient algorithm for large datasets, it has important educational and practical value. It is adaptive, performing efficiently on small or nearly sorted data, and stable, meaning that it preserves the relative order of equal elements. Its in-place nature also ensures low memory usage, as it does not require additional data structures beyond a few variables.
 
 Insertion Sort’s straightforward logic makes it a common choice for teaching the fundamentals of sorting algorithms and algorithmic thinking. Moreover, it is often used as a subroutine within more complex algorithms such as Hybrid Sorts (e.g., TimSort) for optimizing performance on small partitions of data.
+
+
+
+
+ANSAR AND
