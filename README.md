@@ -102,3 +102,17 @@ While the core algorithm remains inherently quadratic, the partner’s implement
 In conclusion, my partner’s Insertion Sort implementation is both accurate and well-structured, effectively bridging theoretical understanding with empirical validation. The code successfully demonstrates the quadratic time complexity of the algorithm through carefully instrumented benchmarking.
 Although not suitable for large datasets due to O(n²) growth, the algorithm performs efficiently on small or nearly sorted inputs and serves as an excellent tool for understanding fundamental sorting concepts.
 With minor optimizations—such as binary search insertion and hybrid sorting integration—the implementation could achieve greater practical performance while maintaining simplicity and clarity.
+
+Comparison of Selection Sort and Insertion Sort
+
+Algorithm Best Case Average Case Worst Case Comparisons Swaps Array Accesses
+
+Selection Sort      
+Insertion Sort
+
+
+Conclusion:
+
+Selection Sort performs consistently with  complexity but is less efficient for larger datasets.
+
+Insertion Sort is more efficient for small or nearly sorted datasets but becomes inefficient for larger datasets due to its  time complexity.
