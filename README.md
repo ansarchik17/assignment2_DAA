@@ -219,3 +219,13 @@ The algorithm consistently uses O(1) auxiliary space, confirming its suitability
     2)The number of operations and runtime scale quadratically with input size.
     3)Constant factors such as method calls and Java runtime overhead slightly affect performance for small datasets but do not alter asymptotic growth.
 	4)The Insertion Sort algorithm remains efficient for small or partially sorted datasets but unsuitable for large-scale sorting due to exponential time growth in practice.
+
+Conclusion
+
+The analysis and evaluation of the Insertion Sort algorithm demonstrate that it is a simple yet powerful sorting method for small or nearly sorted datasets. Its main strength lies in its adaptive nature — it performs exceptionally well on data that is already partially ordered, as the algorithm minimizes unnecessary comparisons and swaps in such cases. The algorithm’s best-case time complexity is O(n), occurring when the input array is already sorted, making it efficient for incremental data insertion and real-time applications where datasets are mostly sorted.
+
+However, as shown in both the theoretical and empirical analyses, the average and worst-case complexities of Insertion Sort are O(n^2), which causes performance to degrade rapidly as input size increases. The experimental results confirmed this behavior: the execution time, number of comparisons, and array accesses grew quadratically with the dataset size. For example, while sorting 100 elements was completed within milliseconds, sorting 100,000 elements resulted in a significant increase in runtime, validating the algorithm’s poor scalability for large datasets.
+
+From a code optimization perspective, the implementation was well-structured, and the use of a PerformanceTracker allowed accurate tracking of runtime metrics, offering valuable insights into the algorithm’s internal behavior. Nonetheless, potential optimizations—such as using binary search for finding the insertion position or applying hybrid sorting strategies (e.g., combining Insertion Sort with Merge Sort)—could improve its efficiency and extend its practical applicability.
+
+In conclusion, Insertion Sort remains a valuable algorithm for educational purposes, small-scale data operations, and nearly sorted sequences. However, due to its quadratic growth in operations, it is not suitable for large or completely unsorted datasets. Future improvements could focus on hybrid approaches and adaptive mechanisms to balance simplicity with performance scalability.
