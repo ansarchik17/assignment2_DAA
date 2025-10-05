@@ -11,14 +11,14 @@ import java.util.Random;
 public class BenchmarkRunner {
 
     public static void main(String[] args) {
-        int[] sizes = {100, 1000, 10000, 50000, 100000};
+        int[] sizes = {100, 1000, 10000, 100000};
 
         String filename = "benchmark_results.csv";
 
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
             writer.println("Algorithm,ArraySize,Comparisons,Swaps,ArrayAccesses,ExecutionTime(ms)");
         } catch (IOException e) {
-            System.err.println("❌ Error creating CSV: " + e.getMessage());
+            System.err.println("Error creating CSV: " + e.getMessage());
             return;
         }
 
@@ -34,7 +34,7 @@ public class BenchmarkRunner {
 
             saveToCSV(filename, size, tracker, execTime);
 
-            System.out.printf("✅ Completed: size=%d | time=%.3f ms%n", size, execTime);
+            System.out.printf("Completed: size=%d | time=%.3f ms%n", size, execTime);
         }
 
         System.out.println("\nAll scalability benchmarks completed!");
@@ -61,7 +61,7 @@ public class BenchmarkRunner {
                     execTime
             );
         } catch (IOException e) {
-            System.err.println("❌ Error writing to CSV: " + e.getMessage());
+            System.err.println("Error writing to CSV: " + e.getMessage());
         }
     }
 }

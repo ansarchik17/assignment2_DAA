@@ -3,7 +3,7 @@ package assignment2_DAA.metrics;
 public class PerformanceTracker {
     private long comparisons = 0;
     private long swaps = 0;
-    private long arrayAccesses = 0;  // ✅ массивке қатынау санау үшін
+    private long arrayAccesses = 0;
     private long startTime;
     private long endTime;
 
