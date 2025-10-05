@@ -26,7 +26,6 @@ The worst case arises when the input array is sorted in reverse order. Here, eve
 1 + 2 + 3 + \ldots + (n-1) = \frac{n(n-1)}{2}
 As a result, the worst-case time complexity is O(n²), which makes the algorithm inefficient for large datasets.
 
-⸻
 
 2. Space Complexity
 
@@ -35,7 +34,6 @@ Insertion Sort is an in-place sorting algorithm, meaning it does not require any
 The algorithm uses only a constant amount of extra memory regardless of the input size.
 	2)This efficiency in memory usage makes Insertion Sort particularly suitable for systems with limited resources or when the dataset fits entirely in memory.
 
-⸻
 
 3. Number of Comparisons
 
